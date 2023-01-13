@@ -15,11 +15,7 @@ calc.addEventListener('click', function(e){
         break;
 
         case '=':
-            if(calc__output.innerText.includes('/0')){
-                calc__output.innerText = 'на ноль делить нельзя!';
-            }else{
                 calc__output.innerText = eval(calc__output.innerText).toFixed(3);
-            }
         break;
 
 
