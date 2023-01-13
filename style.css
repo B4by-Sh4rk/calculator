@@ -117,6 +117,9 @@ body{
 }
 
 @media screen and (max-width: 800px){
+    body{
+        background-size: 40%; 
+    }
     .calc{
         padding: 20px 5px;
         width: 300px;
@@ -141,6 +144,9 @@ body{
 }
 
 @media screen and (max-width: 400px){
+    body{
+        background-size: 50%; 
+    }
     .calc{
         padding: 10px 5px;
         width: 250px;
