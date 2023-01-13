@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(92, 28, 68);
+    /*background-image: url('https://media.tenor.com/338ZJyX7CjEAAAAC/%D0%BC%D0%B0%D1%81%D1%8E%D0%BD%D1%8F.gif');
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 20%;*/
+}
+.calc{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.418);
+    padding: 20px 5px;
+    width: 400px;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-auto-rows: 50px;
+    gap: 20px 20px;
+    border-radius: 6px;
+}
+
+
+.calc__output{ 
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, 0.582);
+    color: white;
+    font-size: 24px;
+    font-family: monospace;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: fit-content;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    height: 45px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.267); 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+.calc__btn{
+    background-color: rgb(124, 124, 124);
+    border: 0;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    font-family: monospace;
+    user-select: none;   
+}
+
+.calc__btn:hover{
+    background-color: rgb(105, 105, 105);
+}
+.calc__btn:active{
+    background-color: rgb(75, 75, 75);
+    box-shadow: 1px 1px 3px white;
+}
+
+.calc__btn__reset{
+    background-color: crimson;
+    color: white;
+    grid-column: 1 / 4;
+}.calc__btn__reset:hover{
+    background-color: rgb(197, 8, 46);
+    color: black;
+}.calc__btn__reset:active{
+    box-shadow: 1px 1px 3px white;
+}
+
+.calc__btn__result{
+    background-color: rgb(67, 94, 124);
+    color: white;
+    grid-column: 1 / -1;
+}.calc__btn__result:hover{
+    background-color: rgb(55, 62, 100);
+    color: black;
+}.calc__btn__result:active{
+    box-shadow: 1px 1px 3px white;
+}
+.calc__btn__arrow{
+    background-color: crimson;
+    color: white;
+    grid-column: 4 / -1;
+}.calc__btn__arrow:hover{
+    background-color: rgb(197, 8, 46);
+    color: black;
+}.calc__btn__arrow:active{
+    box-shadow: 1px 1px 3px white;
+}
+
+.calc__btn__operator{
+    background-color: rgb(145, 111, 80);
+}.calc__btn__operator:hover{
+    background-color: rgb(126, 88, 39);
+}.calc__btn__operator:active{
+    box-shadow: 1px 1px 3px white;
+}
