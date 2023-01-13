@@ -16,6 +16,9 @@ calc.addEventListener('click', function(e){
 
         case '=':
                 calc__output.innerText = eval(calc__output.innerText).toFixed(3);
+                if(calc__output.innerText == 'Infinity'){
+                    calc__output.innerText = '0';
+                }
         break;
 
 
