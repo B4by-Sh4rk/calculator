@@ -22,6 +22,11 @@ calc.addEventListener('click', function(e){
                     }
                     if(calc__output.innerText === 'NaN'){
                         calc__output.innerText = '0';
+                    }if(calc__output.innerText === '-Infinity'){
+                        calc__output.innerText = '0';
+                    }
+                    if(calc__output.innerText === '-NaN'){
+                        calc__output.innerText = '0';
                     }
                 }else{
                     calc__output.innerText = eval(calc__output.innerText).toFixed(0);
@@ -30,8 +35,12 @@ calc.addEventListener('click', function(e){
                     }
                     if(calc__output.innerText === 'NaN'){
                         calc__output.innerText = '0';
+                    }if(calc__output.innerText === '-Infinity'){
+                        calc__output.innerText = '0';
                     }
-
+                    if(calc__output.innerText === '-NaN'){
+                        calc__output.innerText = '0';
+                    }
                 }
         break;
 
