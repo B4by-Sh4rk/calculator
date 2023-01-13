@@ -21,7 +21,6 @@ calc.addEventListener('click', function(e){
                 }
         break;
 
-
         default:
             calc__output.innerText += value;
     }
