@@ -15,9 +15,23 @@ calc.addEventListener('click', function(e){
         break;
 
         case '=':
-                calc__output.innerText = eval(calc__output.innerText).toFixed(3);
-                if(calc__output.innerText == 'Infinity'){
-                    calc__output.innerText = '0';
+                if(calc__output.innerText.includes('.')){
+                    calc__output.innerText = eval(calc__output.innerText).toFixed(3);
+                    if(calc__output.innerText === 'Infinity'){
+                        calc__output.innerText = '0';
+                    }
+                    if(calc__output.innerText === 'NaN'){
+                        calc__output.innerText = '0';
+                    }
+                }else{
+                    calc__output.innerText = eval(calc__output.innerText).toFixed(0);
+                    if(calc__output.innerText === 'Infinity'){
+                        calc__output.innerText = '0';
+                    }
+                    if(calc__output.innerText === 'NaN'){
+                        calc__output.innerText = '0';
+                    }
+
                 }
         break;
 
