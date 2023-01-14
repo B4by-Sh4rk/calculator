@@ -9,32 +9,33 @@
 </head>
 <body>
     <article class="calc">
+        <output class="calc__history"></output>
         <output class="calc__output"></output>
 
-        <button type="button" class="calc__btn calc__btn__reset">C</button>
-        <button type="button" class="calc__btn calc__btn__arrow"><</button>
+        <button type="button" class="calc__btn calc__btn__reset" data-type="clear">C</button>
+        <button type="button" class="calc__btn calc__btn__arrow" data-type="delete"><</button>
 
-        <button type="button" class="calc__btn">7</button>
-        <button type="button" class="calc__btn">8</button>
-        <button type="button" class="calc__btn">9</button>
-        <button type="button" class="calc__btn calc__btn__operator">+</button>
+        <button type="button" class="calc__btn" data-type="7">7</button>
+        <button type="button" class="calc__btn" data-type="8">8</button>
+        <button type="button" class="calc__btn" data-type="9">9</button>
+        <button type="button" class="calc__btn calc__btn__operator" data-type="+">+</button>
 
-        <button type="button" class="calc__btn">4</button>
-        <button type="button" class="calc__btn">5</button>
-        <button type="button" class="calc__btn">6</button>
-        <button type="button" class="calc__btn calc__btn__operator">-</button>
+        <button type="button" class="calc__btn" data-type="4">4</button>
+        <button type="button" class="calc__btn" data-type="5">5</button>
+        <button type="button" class="calc__btn" data-type="6">6</button>
+        <button type="button" class="calc__btn calc__btn__operator" data-type="-">-</button>
 
-        <button type="button" class="calc__btn">1</button>
-        <button type="button" class="calc__btn">2</button>
-        <button type="button" class="calc__btn">3</button>
-        <button type="button" class="calc__btn calc__btn__operator">*</button>
+        <button type="button" class="calc__btn" data-type="1">1</button>
+        <button type="button" class="calc__btn" data-type="2">2</button>
+        <button type="button" class="calc__btn" data-type="3">3</button>
+        <button type="button" class="calc__btn calc__btn__operator" data-type="*">*</button>
 
-        <button type="button" class="calc__btn">0</button>
-        <button type="button" class="calc__btn">.</button>
-        <button type="button" class="calc__btn">00</button>
-        <button type="button" class="calc__btn calc__btn__operator">/</button>
+        <button type="button" class="calc__btn" data-type="0">0</button>
+        <button type="button" class="calc__btn" data-type=".">.</button>
+        <button type="button" class="calc__btn calc__btn__operator" data-type="history">H</button>
+        <button type="button" class="calc__btn calc__btn__operator" data-type="/">/</button>
 
-        <button type="button" class="calc__btn calc__btn__result">=</button>
+        <button type="button" class="calc__btn calc__btn__result" data-type="=">=</button>
     </article>
     <script src="main.js"></script>
 </body>

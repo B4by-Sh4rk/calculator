@@ -44,6 +44,21 @@ body{
     scrollbar-width: thin;
     height: 45px;
 }
+.calc__history{ 
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, 0.582);
+    color: white;
+    font-size: 24px;
+    font-family: monospace;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: fit-content;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    height: 45px;
+}
 ::-webkit-scrollbar {
     width: 10px;
   }
