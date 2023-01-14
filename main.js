@@ -12,8 +12,8 @@ calc.addEventListener('click', function(e){
     if(data != '='){
         total(firstNumber);
     }
-    console.log('ОПЕРАЦИЯ ' + operation);
-    console.log('ЧИСЛО ' + firstNumber);
+    /*console.log('ОПЕРАЦИЯ ' + operation);
+    console.log('ЧИСЛО ' + firstNumber);*/
     totalHistory(allHistory);
 
 });
@@ -77,7 +77,7 @@ function totalHistory(historyArr){
             htmlEl = htmlEl + ` <strong>${i}</strong> `;
         }
     });
-    console.log(htmlEl);
+    //console.log(htmlEl);
     calc__history.innerHTML = htmlEl;
 }
 
@@ -100,7 +100,7 @@ function calculate(calcHistoryArr){
             }
         }
         });
-    console.log(totalRes)
+    //console.log(totalRes)
     return totalRes;
 }
 
