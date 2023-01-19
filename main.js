@@ -56,9 +56,10 @@ function operations(data){
         allHistory.push(firstNumber);
         const totalCalc = calculate(allHistory);
         total(totalCalc);
-        allHistory = [];
-        firstNumber = totalCalc;
         totalHistory(allHistory);
+        allHistory = [];
+        operation = 'number';
+        firstNumber = totalCalc;
     }
 }
 

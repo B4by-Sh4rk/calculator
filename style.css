@@ -5,27 +5,24 @@
 }
 body{
     display: flex;
-    min-height: 100vh;
+    height: 100%;
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    background-color: rgb(92, 28, 68);
-    background-image: url('https://media.tenor.com/338ZJyX7CjEAAAAC/%D0%BC%D0%B0%D1%81%D1%8E%D0%BD%D1%8F.gif');
-    background-position: center;
-    background-repeat: repeat;
-    background-size: 20%; 
+    background-color: rgb(253, 188, 47);
     /**/
 }
 .calc{
+    height: 100%;
+    width: 100%;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.418);
-    padding: 20px 5px;
-    width: 400px;
-    padding-left: 20px;
     display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-auto-rows: 50px;
-    gap: 20px 20px;
-    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(4, [col-start] 24% [col-end]);
+    grid-template-rows: auto;
+    grid-auto-columns:auto;
+    grid-auto-rows:auto;
+    gap: 2px 2px;
 }
 
 
@@ -35,12 +32,10 @@ body{
     color: white;
     font-size: 24px;
     font-family: monospace;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
     height: fit-content;
     overflow-y: hidden;
     overflow-x: scroll;
+    padding: 41px 10px;
     scrollbar-width: thin;
     height: 45px;
 }
@@ -50,9 +45,7 @@ body{
     color: white;
     font-size: 24px;
     font-family: monospace;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 30px 10px;
     height: fit-content;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -76,7 +69,7 @@ body{
 .calc__btn{
     background-color: rgb(124, 124, 124);
     border: 0;
-    padding: 10px;
+    padding: 41px 10px;
     font-size: 24px;
     cursor: pointer;
     font-family: monospace;
@@ -130,11 +123,8 @@ body{
 }.calc__btn__operator:active{
     box-shadow: 1px 1px 3px white;
 }
-
+/*
 @media screen and (max-width: 800px){
-    body{
-        background-size: 40%; 
-    }
     .calc{
         padding: 20px 5px;
         width: 300px;
@@ -159,9 +149,6 @@ body{
 }
 
 @media screen and (max-width: 400px){
-    body{
-        background-size: 50%; 
-    }
     .calc{
         padding: 10px 5px;
         width: 250px;
@@ -183,4 +170,4 @@ body{
         padding: 5px;
         font-size: 20px;
     }
-}
+}*/
