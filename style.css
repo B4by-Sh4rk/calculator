@@ -18,11 +18,11 @@ body{
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: repeat(4, [col-start] 24% [col-end]);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(5, [col-start] 19% [col-end]);
+    grid-template-rows: repeat(5, [col-start] auto [col-end]);
     grid-auto-columns:auto;
     grid-auto-rows:auto;
-    gap: 2px 2px;
+    gap: 2px 5px;
 }
 
 
@@ -35,7 +35,7 @@ body{
     height: fit-content;
     overflow-y: hidden;
     overflow-x: scroll;
-    padding: 41px 10px;
+    padding: calc(100vh*0.01) 10px;
     scrollbar-width: thin;
     height: 45px;
 }
@@ -45,7 +45,7 @@ body{
     color: white;
     font-size: 24px;
     font-family: monospace;
-    padding: 30px 10px;
+    padding: calc(100vh*0.02) 10px;
     height: fit-content;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -69,7 +69,7 @@ body{
 .calc__btn{
     background-color: rgb(124, 124, 124);
     border: 0;
-    padding: 41px 10px;
+    padding: calc(100vh*0.05) 0px;
     font-size: 24px;
     cursor: pointer;
     font-family: monospace;
@@ -87,7 +87,7 @@ body{
 .calc__btn__reset{
     background-color: crimson;
     color: white;
-    grid-column: 1 / 4;
+    grid-column: 1 / 5;
 }.calc__btn__reset:hover{
     background-color: rgb(197, 8, 46);
     color: black;
@@ -108,7 +108,7 @@ body{
 .calc__btn__arrow{
     background-color: crimson;
     color: white;
-    grid-column: 4 / -1;
+    grid-column: 5 / -1;
 }.calc__btn__arrow:hover{
     background-color: rgb(197, 8, 46);
     color: black;
@@ -171,3 +171,46 @@ body{
         font-size: 20px;
     }
 }*/
+
+
+/*
+@media screen and (min-height: 505px){
+    .calc__output{ 
+        padding: 15px 10px;
+    }
+    .calc__history{ 
+        padding: 25px 10px;
+    }.calc__btn{
+        padding: 15px 10px;
+    }
+}
+*/
+@media screen and (max-height: 700px){
+    .calc__btn{
+        padding: calc(100vh*0.04) 10px;
+    }
+}
+
+@media screen and (max-height: 540px){
+    .calc__btn{
+        padding: calc(100vh*0.03) 10px;
+    }
+}
+
+@media screen and (max-height: 445px){
+    .calc__btn{
+        padding: calc(100vh*0.02) 10px;
+    }
+}
+
+@media screen and (max-height: 355px){
+    .calc__btn{
+        padding: calc(100vh*0.01) 10px;
+    }
+}
+@media screen and (max-height: 330px){
+    .calc__btn{
+        font-size: 20px;
+        padding: calc(100vh*0.01) 10px;
+    }
+}

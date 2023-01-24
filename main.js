@@ -1,6 +1,7 @@
 const calc = document.querySelector('.calc');
 const calc__output = document.querySelector('.calc__output');
 const calc__history = document.querySelector('.calc__history');
+let allTotalHistory = [];
 let allHistory = [];
 let firstNumber = '';
 let operation = '';
@@ -32,9 +33,10 @@ function operations(data){
             }
         }
     }else if(data == 'delete' && operation == 'number'){
-        firstNumber = firstNumber.substring(0, firstNumber.length - 1);
+        firstNumber = calc__output.value.substring(0, calc__output.value.length - 1);
     }else if(data == 'clear'){
         firstNumber = '';
+        allTotalHistory.push('___');
         allHistory = [];
     }else if(data == '+' && firstNumber){
         operation = data;
@@ -52,34 +54,91 @@ function operations(data){
         operation = data;
         allHistory.push(firstNumber, '*');
         firstNumber = '';
-    }else if(data == '='){
-        allHistory.push(firstNumber);
+    }else if(data == 'history'){
+        alert(allTotalHistory.join(' '));;
+        console.log(allTotalHistory);
+    }else if(data == '**2' && firstNumber){
+        operation = data;
+        allHistory.push(Math.pow(firstNumber, 2));
         const totalCalc = calculate(allHistory);
         total(totalCalc);
         totalHistory(allHistory);
+        allTotalHistory.push(firstNumber,'**2 =',allHistory.join(''), '|');
         allHistory = [];
         operation = 'number';
         firstNumber = totalCalc;
+    }else if(data == '**' && firstNumber){
+        operation = data;
+        allHistory.push(firstNumber, '**');
+        firstNumber = '';
+    }else if(data == '√' && firstNumber){
+        operation = data;
+        allHistory.push(Math.sqrt(firstNumber));
+        const totalCalc = calculate(allHistory);
+        total(totalCalc);
+        totalHistory(allHistory);
+        allTotalHistory.push('√',firstNumber,'=',allHistory.join(''), '|');
+        allHistory = [];
+        operation = 'number';
+        firstNumber = totalCalc;
+    }else if(data == 'n!' && firstNumber){
+        operation = data;
+        allHistory.push(factorial(firstNumber));
+        const totalCalc = calculate(allHistory);
+        total(totalCalc);
+        totalHistory(allHistory);
+        allTotalHistory.push('!',firstNumber,'=',allHistory.join(''), '|');
+        allHistory = [];
+        operation = 'number';
+        firstNumber = totalCalc;
+    }
+    
+    else if(data == '='){
+        const n = calc__output.value;
+        if(isString(n) == false){
+            firstNumber  = eval(n);
+        }else {
+            alert('не число');
+        }
+        allHistory.push(firstNumber);
+        const totalCalc = calculate(allHistory);
+        totalHistory(allHistory);
+        total(totalCalc);
+        allTotalHistory.push(allHistory.join(''), '=', calc__output.value, '|');
+        allHistory = [];
+        operation = 'number';
+        if(calc__output.value == 0){
+            firstNumber = '0';
+
+        }else{
+            firstNumber = totalCalc;
+            }
+
     }
 }
 
 
 
 function total(totalValue){
-    calc__output.innerHTML = totalValue;
+    calc__output.value = totalValue;
 }
 
 function totalHistory(historyArr){
     let htmlEl = '';
     historyArr.forEach((i) => {
-        if(i >= 0){
-            htmlEl = htmlEl + `<span>${i}</span>`;
-        }else if(['+','-','/','*'].includes(i)){
-            htmlEl = htmlEl + ` <strong>${i}</strong> `;
+        if(i){
+            htmlEl = htmlEl + `${i}`;
+        }else if(['+','-','/','*','**','**2'].includes(i)){
+            if(['**'].includes(i)){
+                htmlEl = htmlEl + `^`;
+            }else if(['**2'].includes(i)){
+                htmlEl = htmlEl + `^2`;
+            }else{
+                htmlEl = htmlEl + `${i}`;
+            }
         }
     });
-    //console.log(htmlEl);
-    calc__history.innerHTML = htmlEl;
+    calc__history.value = htmlEl;
 }
 
 function calculate(calcHistoryArr){
@@ -97,42 +156,29 @@ function calculate(calcHistoryArr){
                     totalRes = totalRes / parseFloat(i);
                 }else if(calcHistoryArr[idx-1] == '*'){
                     totalRes = totalRes * parseFloat(i);
+                }else if(calcHistoryArr[idx-1] == '**'){
+                    totalRes = totalRes ** parseFloat(i);
+                }else if(calcHistoryArr[idx-1] == Math.pow(firstNumber, 2)){
+                    totalRes = Math.pow(firstNumber, 2);
+                }else if(calcHistoryArr[idx-1] == Math.sqrt(firstNumber)){
+                    totalRes = Math.sqrt(firstNumber);
+                }else if(calcHistoryArr[idx-1] == factorial(firstNumber)){
+                    totalRes = factorial(firstNumber);
                 }
             }
         }
         });
-    //console.log(totalRes)
     return totalRes;
 }
 
+function factorial(n) {
+    return (n != 1) ? n * factorial(n - 1) : 1;
+  }
 
-/*function totalHistory(historyArr){
-    let htmlEl = '';
-    for (let i = 0; i < historyArr.length; i += 1) {
-        if(historyArr[i] >= 0){
-            htmlEl = htmlEl + `<span>${historyArr[i]}</span>`;
-        }else if(['+','-','/','*'].includes(historyArr[i])){
-            htmlEl = htmlEl + ` <strong>${historyArr[i]}</strong> `;
-        }
-    };
-    console.log(htmlEl);
-    calc__history.innerHTML = htmlEl;
-}
-
-function calculate(calcHistoryArr){
-    let totalRes = 0;
-    for (let i = 0; i < calcHistoryArr.length; i += 1) {
-        if(i == 0){
-            totalRes == parseFloat(calcHistoryArr[i]);
-        }else if(i - 2 > 0){
-            if(parseFloat(calcHistoryArr[i]) >= 0){
-                if(calcHistoryArr[i-1] == '+'){
-                    totalRes = totalRes + parseFloat(calcHistoryArr[i]);
-                }
-            }
-        }
-        };
-    console.log(totalRes)
-    return totalRes;
-}
-*/
+  
+  function isString(str){
+    const regexp = /[aA-zZ]/;
+    if(regexp.test(str)){
+        return true;
+    }else return false;
+  }
