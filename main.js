@@ -1,6 +1,9 @@
 const calc = document.querySelector('.calc');
 const calc__output = document.querySelector('.calc__output');
 const calc__history = document.querySelector('.calc__history');
+const history__text = document.querySelector('.history__text');
+const history__menu = document.querySelector('.history__menu');
+const calc__all__off = document.querySelector('.calc__all__off');
 let allTotalHistory = [];
 let allHistory = [];
 let firstNumber = '';
@@ -18,7 +21,7 @@ calc.addEventListener('click', function(e){
     totalHistory(allHistory);
 
 });
-
+        let history__now = allTotalHistory.join(' ');
 function operations(data){
     if(data >= 0){
         operation = 'number';
@@ -36,7 +39,6 @@ function operations(data){
         firstNumber = calc__output.value.substring(0, calc__output.value.length - 1);
     }else if(data == 'clear'){
         firstNumber = '';
-        allTotalHistory.push('___');
         allHistory = [];
     }else if(data == '+' && firstNumber){
         operation = data;
@@ -55,15 +57,20 @@ function operations(data){
         allHistory.push(firstNumber, '*');
         firstNumber = '';
     }else if(data == 'history'){
-        alert(allTotalHistory.join(' '));;
+        calc__all__off.classList.toggle('calc__all__on');
+        history__menu.classList.toggle('display__none');
+        //alert(allTotalHistory.join(' '));; 
         console.log(allTotalHistory);
+        history__text.innerText = history__now.split(' ').join('');
     }else if(data == '**2' && firstNumber){
         operation = data;
         allHistory.push(Math.pow(firstNumber, 2));
         const totalCalc = calculate(allHistory);
         total(totalCalc);
         totalHistory(allHistory);
-        allTotalHistory.push(firstNumber,'**2 =',allHistory.join(''), '|');
+        allTotalHistory.push(firstNumber,'**2 =',allHistory.join(''), ''+'\r\n'+'');
+        history__now = allTotalHistory.join(' ');
+        history__text.innerText = history__now.split(' ').join('');
         allHistory = [];
         operation = 'number';
         firstNumber = totalCalc;
@@ -77,7 +84,9 @@ function operations(data){
         const totalCalc = calculate(allHistory);
         total(totalCalc);
         totalHistory(allHistory);
-        allTotalHistory.push('√',firstNumber,'=',allHistory.join(''), '|');
+        allTotalHistory.push('√',firstNumber,'=',allHistory.join(''), ''+'\r\n'+'');
+        history__now = allTotalHistory.join(' ');
+        history__text.innerText = history__now.split(' ').join('');
         allHistory = [];
         operation = 'number';
         firstNumber = totalCalc;
@@ -87,7 +96,9 @@ function operations(data){
         const totalCalc = calculate(allHistory);
         total(totalCalc);
         totalHistory(allHistory);
-        allTotalHistory.push('!',firstNumber,'=',allHistory.join(''), '|');
+        allTotalHistory.push('!',firstNumber,'=',allHistory.join(''), ''+'\r\n'+'');
+        history__now = allTotalHistory.join(' ');
+        history__text.innerText = history__now.split(' ').join('');
         allHistory = [];
         operation = 'number';
         firstNumber = totalCalc;
@@ -104,7 +115,9 @@ function operations(data){
         const totalCalc = calculate(allHistory);
         totalHistory(allHistory);
         total(totalCalc);
-        allTotalHistory.push(allHistory.join(''), '=', calc__output.value, '|');
+        allTotalHistory.push(allHistory.join(''), '=', calc__output.value, ''+'\r\n'+'');
+        history__now = allTotalHistory.join(' ');
+        history__text.innerText = history__now.split(' ').join('');
         allHistory = [];
         operation = 'number';
         if(calc__output.value == 0){

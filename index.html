@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <article class="calc">
+    <div class="calc__all__off">
+        <article class="calc">
         <output class="calc__history"></output>
         <input class="calc__output"></input>
 
@@ -40,7 +41,11 @@
         <button type="button" class="calc__btn calc__btn__operator" data-type="n!">n!</button>
 
         <button type="button" class="calc__btn calc__btn__result" data-type="=">=</button>
-    </article>
+        </article>
+        <article class="history__menu display__none">
+            <output class="history__text"></output>
+        </article>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
