@@ -108,6 +108,9 @@ function operations(data){
         const n = calc__output.value;
         if(isString(n) == false){
             firstNumber  = n;
+            if((firstNumber.includes(',')) == true){
+                firstNumber = n.replaceAll(',', '.');
+            }
         }else {
             alert('не число');
         }
