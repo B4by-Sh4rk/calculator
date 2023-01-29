@@ -52,12 +52,12 @@ body{
 .history__menu{
     grid-column: 3 / -1;
     height: 100%;
-    width: 95%;
+    width: 94%;
     display: flex;
     background-color: rgba(0, 0, 0, 0.582);
     justify-content: center;
     padding: 0px 5px;
-
+    overflow-y: scroll;
 }
 
 .history__text{

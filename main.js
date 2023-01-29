@@ -60,7 +60,7 @@ function operations(data){
         calc__all__off.classList.toggle('calc__all__on');
         history__menu.classList.toggle('display__none');
         //alert(allTotalHistory.join(' '));; 
-        console.log(allTotalHistory);
+        //console.log(allTotalHistory);
         history__text.innerText = history__now.split(' ').join('');
     }else if(data == '**2' && firstNumber){
         operation = data;
@@ -68,7 +68,7 @@ function operations(data){
         const totalCalc = calculate(allHistory);
         total(totalCalc);
         totalHistory(allHistory);
-        allTotalHistory.push(firstNumber,'**2 =',allHistory.join(''), ''+'\r\n'+'');
+        allTotalHistory.push(firstNumber,'^2 =',allHistory.join(''), ''+'\r\n'+'');
         history__now = allTotalHistory.join(' ');
         history__text.innerText = history__now.split(' ').join('');
         allHistory = [];
@@ -76,7 +76,7 @@ function operations(data){
         firstNumber = totalCalc;
     }else if(data == '**' && firstNumber){
         operation = data;
-        allHistory.push(firstNumber, '**');
+        allHistory.push(firstNumber, '^');
         firstNumber = '';
     }else if(data == '√' && firstNumber){
         operation = data;
@@ -92,11 +92,11 @@ function operations(data){
         firstNumber = totalCalc;
     }else if(data == 'n!' && firstNumber){
         operation = data;
-        allHistory.push(factorial(firstNumber));
+        allHistory.push(firstNumber,'!');
         const totalCalc = calculate(allHistory);
         total(totalCalc);
         totalHistory(allHistory);
-        allTotalHistory.push('!',firstNumber,'=',allHistory.join(''), ''+'\r\n'+'');
+        allTotalHistory.push('!',firstNumber,'=',totalCalc, ''+'\r\n'+'');
         history__now = allTotalHistory.join(' ');
         history__text.innerText = history__now.split(' ').join('');
         allHistory = [];
@@ -107,25 +107,39 @@ function operations(data){
     else if(data == '='){
         const n = calc__output.value;
         if(isString(n) == false){
-            firstNumber  = eval(n);
+            firstNumber  = n;
         }else {
             alert('не число');
         }
-        allHistory.push(firstNumber);
-        const totalCalc = calculate(allHistory);
-        totalHistory(allHistory);
-        total(totalCalc);
-        allTotalHistory.push(allHistory.join(''), '=', calc__output.value, ''+'\r\n'+'');
-        history__now = allTotalHistory.join(' ');
-        history__text.innerText = history__now.split(' ').join('');
-        allHistory = [];
-        operation = 'number';
-        if(calc__output.value == 0){
-            firstNumber = '0';
+        if(firstNumber == eval(firstNumber)){
+            allHistory.push(eval(firstNumber));
+            const totalCalc = calculate(allHistory);
+            totalHistory(allHistory);
+            total(totalCalc);
+            allTotalHistory.push(allHistory.join(''), '=', calc__output.value, ''+'\r\n'+'');
+            history__now = allTotalHistory.join(' ');
+            history__text.innerText = history__now.split(' ').join('');
+            allHistory = [];
+            operation = 'number';
+            if(calc__output.value == 0){
+                firstNumber = '0';
+    
+            }else{
+                firstNumber = totalCalc;
+                }
 
         }else{
-            firstNumber = totalCalc;
-            }
+                allHistory.push(firstNumber, '=', eval(firstNumber));
+            const totalCalc = eval(firstNumber);
+            totalHistory(allHistory);
+            total(totalCalc);
+            allTotalHistory.push(allHistory.join(''), ''+'\r\n'+'');
+            history__now = allTotalHistory.join(' ');
+            history__text.innerText = history__now.split(' ').join('');
+            allHistory = [];
+            operation = 'number';
+            firstNumber = eval(firstNumber);
+        }
 
     }
 }
@@ -141,8 +155,8 @@ function totalHistory(historyArr){
     historyArr.forEach((i) => {
         if(i){
             htmlEl = htmlEl + `${i}`;
-        }else if(['+','-','/','*','**','**2'].includes(i)){
-            if(['**'].includes(i)){
+        }else if(['+','-','/','*','^','**2'].includes(i)){
+            if(['^'].includes(i)){
                 htmlEl = htmlEl + `^`;
             }else if(['**2'].includes(i)){
                 htmlEl = htmlEl + `^2`;
@@ -175,7 +189,7 @@ function calculate(calcHistoryArr){
                     totalRes = Math.pow(firstNumber, 2);
                 }else if(calcHistoryArr[idx-1] == Math.sqrt(firstNumber)){
                     totalRes = Math.sqrt(firstNumber);
-                }else if(calcHistoryArr[idx-1] == factorial(firstNumber)){
+                }else if(calcHistoryArr[idx] == '!'){
                     totalRes = factorial(firstNumber);
                 }
             }
